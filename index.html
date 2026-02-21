@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Copia-fotos</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+    }
+
+    .section {
+      border: 1px solid #ccc;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+    }
+
+    .row {
+      margin-bottom: 10px;
+    }
+
+    input[type="text"] {
+      width: 300px;
+      padding: 5px;
+    }
+
+    button {
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+
+    #log {
+      width: 100%;
+      height: 80px;
+      margin-top: 10px;
+      font-family: monospace;
+    }
+
+    #process-list {
+      width: 100%;
+      height: 150px;
+      overflow-y: scroll;
+      border: 1px solid #aaa;
+      background: #fff;
+      padding: 5px;
+      font-family: monospace;
+      font-size: 12px;
+      margin-top: 10px;
+    }
+
+    .progress-area {
+      margin-top: 15px;
+      padding: 10px;
+      background: #f9f9f9;
+    }
+
+    progress {
+      width: 100%;
+      height: 20px;
+      margin-top: 5px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <!-- Organizer UI -->
+    <div class="section">
+      <h2>Copia-fotos</h2>
+
+      <div class="row">
+        <label>Origen:</label>
+        <input type="text" id="source-path" readonly placeholder="No hay carpeta seleccionada" />
+        <button id="btn-select-source">Seleccionar origen...</button>
+      </div>
+
+      <div class="row">
+        <label>Destino (fotos):</label>
+        <input type="text" id="dest-photos-path" readonly placeholder="No hay carpeta seleccionada" />
+        <button id="btn-select-dest-photos">Seleccionar destino (fotos)...</button>
+      </div>
+
+      <div class="row">
+        <label>Destino (vídeos):</label>
+        <input type="text" id="dest-videos-path" readonly placeholder="No hay carpeta seleccionada" />
+        <button id="btn-select-dest-videos">Seleccionar destino (vídeos)...</button>
+      </div>
+
+      <div class="row">
+        <label>Modo:</label>
+        <label><input type="radio" name="mode" value="copy" checked> Copiar</label>
+        <label><input type="radio" name="mode" value="move"> Mover</label>
+      </div>
+
+      <div class="row">
+        <label><input type="checkbox" id="chk-auto-open" checked> Abrir carpetas de destino al terminar</label>
+      </div>
+
+      <div class="row">
+        <button id="btn-scan">Escanear</button>
+        <button id="btn-start">Iniciar</button>
+        <button id="btn-cancel">Cancelar</button>
+      </div>
+
+      <div class="row" id="actions-post-process" style="display: none;">
+        <button id="btn-open-photos" disabled>Abrir destino (fotos)</button>
+        <button id="btn-open-videos" disabled>Abrir destino (vídeos)</button>
+      </div>
+
+      <div class="progress-area">
+        <div>Progreso:</div>
+        <progress id="progress-bar" value="0" max="100"></progress>
+        <div id="progress-text">Procesados 0 / 0</div>
+        <div id="current-file">Archivo: --</div>
+        <div id="process-list"></div>
+      </div>
+
+      <label>Registros Generales:</label>
+      <textarea id="log" readonly placeholder="Los registros aparecerán aquí..."></textarea>
+    </div>
+  </div>
+  <script type="module" src="/src/renderer.js"></script>
+</body>
+
+</html>

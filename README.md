@@ -63,5 +63,22 @@ electron-vite/
 └─ README.md
 ```
 
+🔄 Recordatorio de sincronización con GitHub
+
+Tras realizar cambios importantes en el proyecto, recuerda:
+
+Comprobar estado
+
+git status
+
+Registrar cambios
+
+git add .
+git commit -m "Descripción del cambio"
+
+Sincronizar con GitHub
+
+git push
+
 ---
 *Generado por Antigravity*
